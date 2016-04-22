@@ -49,19 +49,20 @@ function handleMIPSEvent(evt) {
 function setMyActiveState(n) {
     //makeAllHidden();
     // var newStateContainer = 
-    $("#mips-content").append(document.getElementById("state" + n));
+    console.log(parseInt(n),10);
+    //$("#mips-content").append(document.getElementById("state" + n));
     // if (typeof newStateContainer !== 'undefined' && newStateContainer !== null) {
     //     newStateContainer.style.display = "initial";
     // }
 }
 
 // Make all the content hidden
-function makeAllHidden() {
+/*function makeAllHidden() {
     var contentHandles = document.getElementsByClassName("ui-content");
     for (i = 0; i < contentHandles.length; i++) {
         contentHandles[i].style.display = "none";
     }
-}
+}*/
 
 // set the initial state
 $.get("current_state", function(data) {
