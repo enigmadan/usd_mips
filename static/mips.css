@@ -5,6 +5,10 @@ html {
 body {
   margin: 0 0 100px 0; /* bottom = footer height */
 }
+h1 {
+  padding:0.67em;
+  margin:0;
+}
 #thefooter {
   position: absolute;
   padding:5px;
