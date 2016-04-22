@@ -5,7 +5,7 @@ html {
 body {
   margin: 0; /* bottom = footer height */
 }
-#thefooter {
+#thefooter,#header {
   position: absolute;
   /*left: 0;*/
   bottom: 0;
