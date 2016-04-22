@@ -49,8 +49,7 @@ function handleMIPSEvent(evt) {
 function setMyActiveState(n) {
     //makeAllHidden();
     // var newStateContainer = 
-    console.log(parseInt(n),10);
-    //$("#mips-content").append(document.getElementById("state" + n));
+    $("#mips-content").append(mips[parseInt(n)]);
     // if (typeof newStateContainer !== 'undefined' && newStateContainer !== null) {
     //     newStateContainer.style.display = "initial";
     // }
