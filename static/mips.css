@@ -1,16 +1,16 @@
 html {
-    position: relative;
-    min-height: 100%;
+  position: relative;
+  min-height: 100%;
 }
 body {
-    margin: 0 0 150px; /* bottom = footer height */
+  margin: 0; /* bottom = footer height */
 }
 #thefooter {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 150px;
-    width: 100%;
+  position: absolute;
+  /*left: 0;*/
+  bottom: 0;
+  height: 150px;
+  width: 100%;
 }
 .btn {
   background: #3498db;
