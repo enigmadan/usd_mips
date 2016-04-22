@@ -3,7 +3,7 @@ var url = window.location.pathname;
 var filename = url.substring(url.lastIndexOf('/')+1);
 var team_num = /\d/.exec(filename);
 console.log("I'm on team " + team_num);
-color = ["purple","pink","teal","blue"];
+color = ["","purple","pink","teal","blue"];
 $("#thefooter").css("background-color",color[parseInt(team_num)]);
 $("#header").css("background-color",color[parseInt(team_num)]);
 
