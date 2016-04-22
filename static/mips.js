@@ -48,7 +48,7 @@ function handleMIPSEvent(evt) {
 // Reveal content related to the current state
 function setMyActiveState(n) {
     var x = parseInt(n);
-    if(x%3==1){
+    if(x==0||x%3==1){
         // makeAllHidden();
         $("#mips-content").html("");
     }
