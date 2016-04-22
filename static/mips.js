@@ -47,11 +47,12 @@ function handleMIPSEvent(evt) {
 
 // Reveal content related to the current state
 function setMyActiveState(n) {
-    makeAllHidden();
-    var newStateContainer = document.getElementById("state" + n)
-    if (typeof newStateContainer !== 'undefined' && newStateContainer !== null) {
-        newStateContainer.style.display = "initial";
-    }
+    //makeAllHidden();
+    // var newStateContainer = 
+    mips-content.append(document.getElementById("state" + n));
+    // if (typeof newStateContainer !== 'undefined' && newStateContainer !== null) {
+    //     newStateContainer.style.display = "initial";
+    // }
 }
 
 // Make all the content hidden
