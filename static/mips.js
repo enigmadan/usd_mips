@@ -4,7 +4,7 @@ var filename = url.substring(url.lastIndexOf('/')+1);
 var team_num = /\d/.exec(filename);
 console.log("I'm on team " + team_num);
 color = ["purple","pink","teal","blue"];
-$(".thefooter").css("background-color",color[parseInt(team_num)]);
+$("#thefooter").css("background-color",color[parseInt(team_num)]);
 
 // If we're an admin page, add info to the footer
 if (filename.includes("admin")) {
