@@ -9,6 +9,9 @@ h1 {
   padding:0.67em;
   margin:0;
 }
+#hintCount {
+  float:right;
+}
 #mips-content{
   position: relative;
   width:100%;

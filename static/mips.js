@@ -2,14 +2,18 @@
 var url = window.location.pathname;
 var filename = url.substring(url.lastIndexOf('/')+1);
 var team_num = /\d/.exec(filename);
+var running = 0;
 var hints = 0;
 console.log("I'm on team " + team_num);
 color = ["","purple","pink","teal","blue"];
 $("#thefooter").css("background-color",color[parseInt(team_num)]);
 $("#header").css("background-color",color[parseInt(team_num)]);
+$("#hintMeBabyOneMoreTime").hide();
+
 
 // If we're an admin page, add info to the footer
 if (filename.includes("admin")) {
+    $("#hintMeBabyOneMoreTime").show();
     var footerElt = document.getElementById("thefooter");
     footerElt.innerHTML += '<a href="#" id="team1btn" class="button">Team 1</a><a href="#" id="team2btn" class="button">Team 2</a><a href="#" id="team3btn" class="button">Team 3</a><a href="#" id="team4btn" class="button">Team 4</a><a href="#" id="resetbtn" class="button">RESET</a>'
 
@@ -18,13 +22,14 @@ if (filename.includes("admin")) {
         $(myTeamSelector).text("Advance");
         $(myTeamSelector).click(function()
         {
+            running = 1;
             hints = 0;
             $.get("advance_state/"+team_num);
             return false; // don't reload
         });
         $("#hintMeBabyOneMoreTime").click(function()
         {
-            if(hints++<=1){
+            if(hints++<=1 && running){
                 $.get("hintMeBabyOneMoreTime/"+team_num);
             }
             return false; // don't reload
@@ -32,9 +37,9 @@ if (filename.includes("admin")) {
 
         $("#resetbtn").click(function()
         {
+            running = 0;
             $("#hints").text("0");
             $.get("reset");
-            $("#hintCount").hide();
             return false;
         });
     });
@@ -69,7 +74,7 @@ function setMyActiveState(n,h) {
     // var newStateContainer = 
     $("#hints").html(h);
     console.log("hints used: "+h);
-    $("#mips-content").append(mips[x]);
+    $("#mips-content").prepend(mips[x]);
     // if (typeof newStateContainer !== 'undefined' && newStateContainer !== null) {
     //     newStateContainer.style.display = "initial";
     // }
