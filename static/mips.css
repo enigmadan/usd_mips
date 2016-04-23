@@ -5,32 +5,33 @@ html {
 body {
   margin: 0 0 100px 0; /* bottom = footer height */
 }
-h1 {
-  padding:0.67em;
-  margin:0;
-}
 #hintCount {
   float:right;
 }
 #mips-content{
-  position: relative;
-  width:100%;
-  overflow-x: auto;
-  bottom: 100px;
-  top: 0px;
+  position:absolute;
+  top:200px;
+  bottom:200px;
+  left:0px;
+  right:0px;
+  overflow:auto;
 }
 #header {
-  height:100px;
-  width:100%;
-  margin:0;
+  position:absolute;
+  top:0px;
+  left:0px;
+  height:200px;
+  right:0px;
+  overflow:hidden;
 }
+
 #thefooter {
-  position: absolute;
-  padding:5px;
-  /*left: 0;*/
-  bottom: 0;
-  height: 100px;
-  width: 100%;
+  position:absolute;
+  bottom:0px;
+  height:200px;
+  left:0px;
+  right:0px;
+  overflow:hidden;
 }
 .button {
   background: #3498db;
