@@ -6,12 +6,16 @@ body {
   margin: 0 0 100px 0; /* bottom = footer height */
 }
 #hintCount {
+  background-color:rgba(200,200,200,.5);
   float:right;
+  position:relative;
+  top:-4em;
+  padding:20px 50px 20px 20px;
 }
 #mips-content{
   position:absolute;
-  top:100px;
-  bottom:75px;
+  top:7em;
+  bottom:5em;
   left:0px;
   right:0px;
   overflow:auto;
@@ -20,15 +24,24 @@ body {
   position:absolute;
   top:0px;
   left:0px;
-  height:100px;
+  height:7em;
   right:0px;
   overflow:hidden;
 }
-
+#title {
+  padding:.25em;
+  display:block;
+  /* float:center; */
+  text-shadow: 0px 0px 8px #000000;
+  color:white;
+  font-size:3em;
+  text-align: center;
+  /* width:100px; */
+}
 #thefooter {
   position:absolute;
   bottom:0px;
-  height:75px;
+  height:5em;
   left:0px;
   right:0px;
   overflow:hidden;

@@ -4,6 +4,7 @@ var filename = url.substring(url.lastIndexOf('/')+1);
 var team_num = /\d/.exec(filename);
 var running = 0;
 var hints = 0;
+var clicked = 0;
 console.log("I'm on team " + team_num);
 color = ["","purple","pink","teal","blue"];
 $("#thefooter").css("background-color",color[parseInt(team_num)]);
@@ -22,6 +23,7 @@ if (filename.includes("admin")) {
         $(myTeamSelector).text("Advance");
         $(myTeamSelector).click(function()
         {
+            clicked = 1;
             running = 1;
             hints = 0;
             $.get("advance_state/"+team_num);
@@ -30,6 +32,7 @@ if (filename.includes("admin")) {
         $("#hintMeBabyOneMoreTime").click(function()
         {
             if(hints++<=1 && running){
+                clicked = 1;
                 $.get("hintMeBabyOneMoreTime/"+team_num);
             }
             return false; // don't reload
@@ -66,6 +69,7 @@ function handleMIPSEvent(evt) {
 
 // Reveal content related to the current state
 function setMyActiveState(n,h) {
+    clicked = 0;
     var x = parseInt(n);
     if(x==0||x%3==1){
         // makeAllHidden();
