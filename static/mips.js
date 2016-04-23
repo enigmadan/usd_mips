@@ -32,7 +32,7 @@ if (filename.includes("admin")) {
 
         $("#resetbtn").click(function()
         {
-            $("#hints").html("0");
+            $("#hints").text("0");
             $.get("reset");
             return false;
         });
