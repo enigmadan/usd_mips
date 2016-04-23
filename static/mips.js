@@ -45,9 +45,8 @@ function handleMIPSEvent(evt) {
     newState = evt.split(',');
     myState = newState[(team_num*2)-1];
     hintState = newState[(team_num*2)];
-
     console.log("new state is " + newState + ", my state is: " + myState);
-    setMyActiveState(myState);
+    setMyActiveState(myState,hintState);
 
     if (filename.includes("admin")) {
         team3State = newState[3];
@@ -69,6 +68,7 @@ function setMyActiveState(n,h) {
     }
     // var newStateContainer = 
     $("#hints").html(h);
+    console.log("hints used: "+h);
     $("#mips-content").append(mips[x]);
     // if (typeof newStateContainer !== 'undefined' && newStateContainer !== null) {
     //     newStateContainer.style.display = "initial";
