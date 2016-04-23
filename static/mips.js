@@ -24,7 +24,7 @@ if (filename.includes("admin")) {
         });
         $("#hintMeBabyOneMoreTime").click(function()
         {
-            if(hints++<=3){
+            if(hints++<=2){
                 $.get("hintMeBabyOneMoreTime/"+team_num);
             }
             return false; // don't reload
