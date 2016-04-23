@@ -103,7 +103,6 @@ def subscribe():
     print('new subscriber')
     def gen():
         q = Queue()
-
         subscriptions.append(q)
         try:
             while True:
