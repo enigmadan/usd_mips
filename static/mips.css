@@ -14,7 +14,7 @@ h1 {
   width:100%;
   overflow-x: auto;
   bottom: 100px;
-  top: 0s;
+  /*top: 0s;*/
 }
 #header {
   height:100px;
