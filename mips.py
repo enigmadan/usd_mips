@@ -85,7 +85,8 @@ def advance_state(team_num):
             sub.put(msg)
     
     print('advancing state for team {}'.format(team_num))
-    team_states[(team_num*2)-1] += 1
+
+    team_states[(team_num*2)-1] += (2-(team_states[(team_num*2)-1]%3))+1
     # team_states[(team_num*2)] = 0
     gevent.spawn(notify)
     return str(team_states)

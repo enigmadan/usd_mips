@@ -26,6 +26,8 @@ if (filename.includes("admin")) {
         {
             if(hints++<=2){
                 $.get("hintMeBabyOneMoreTime/"+team_num);
+                $.get("advance_state/"+team_num);
+
             }
             return false; // don't reload
         });
@@ -34,6 +36,7 @@ if (filename.includes("admin")) {
         {
             $("#hints").text("0");
             $.get("reset");
+            $("#hintCount").hide();
             return false;
         });
     });
@@ -47,7 +50,6 @@ function handleMIPSEvent(evt) {
     hintState = newState[(team_num*2)];
     console.log("new state is " + newState + ", my state is: " + myState);
     setMyActiveState(myState,hintState);
-
     if (filename.includes("admin")) {
         team3State = newState[3];
         btn = document.getElementById("team3btn");

@@ -9,6 +9,11 @@ h1 {
   padding:0.67em;
   margin:0;
 }
+#header {
+  height:100px;
+  width:100%;
+  margin:0;
+}
 #thefooter {
   position: absolute;
   padding:5px;
