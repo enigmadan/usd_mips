@@ -9,6 +9,13 @@ h1 {
   padding:0.67em;
   margin:0;
 }
+#mips-content{
+  position: relative;
+  width:100%;
+  overflow-x: auto;
+  bottom: 100px;
+  top: 100px;
+}
 #header {
   height:100px;
   width:100%;
