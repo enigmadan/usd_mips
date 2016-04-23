@@ -26,8 +26,6 @@ if (filename.includes("admin")) {
         {
             if(hints++<=2){
                 $.get("hintMeBabyOneMoreTime/"+team_num);
-                $.get("advance_state/"+team_num);
-
             }
             return false; // don't reload
         });
