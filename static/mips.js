@@ -101,7 +101,7 @@ function setMyActiveState(n,h) {
            //$('.mips').append($("<div class='message'></div>").load('mips.php?mips=1 #mips1'));
            
            $.get('/getMIPS', function(data) {
-        console.log($(data).text());
+        console.log(data);
         //var newContent = $('.result').html(data);
         //if newContent == $('.oldContent') { // Whatever check is necessary
             //  $('.mips').append(newContent);
