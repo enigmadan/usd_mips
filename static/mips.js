@@ -20,7 +20,7 @@ function setMyActiveState(n,h) {
     clicked = 0;
     var x = parseInt(n);
     // if(x==0||x%3==1){
-        $("#mips-content").children().hide();
+    $("#mips-content").children().hide();
     // }
     $("#hints").html(h);
     console.log("hints used: "+h);

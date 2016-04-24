@@ -65,22 +65,13 @@ def getMIPS():
 
 @app.route("/hintMeBabyOneMoreTime/<int:team_num>")
 def hintMeBabyOneMoreTime(team_num):
-    # def notify():
-    #     msg = ','.join(map(str,team_states))
-    #     for sub in subscriptions[:]:
-    #         sub.put(msg)
     print('adding hint to team {}'.format(team_num))
     team_states[(team_num*2)-1] += 1
     team_states[(team_num*2)] += 1
-    # gevent.spawn(notify)
     return ','.join(map(str,team_states))
 
 @app.route("/advance_state/<int:team_num>")
 def advance_state(team_num):
-    # def notify():
-    #     msg = ','.join(map(str,team_states))
-    #     for sub in subscriptions[:]:
-    #         sub.put(msg)
     print('advancing state for team {}'.format(team_num))
     varx = team_states[(team_num*2)-1];
     if(varx%3==0):
@@ -89,25 +80,7 @@ def advance_state(team_num):
         team_states[(team_num*2)-1] += 3
     else: #(varx%3==2):
         team_states[(team_num*2)-1] += 2
-    # team_states[(team_num*2)] = 0
-    # gevent.spawn(notify)
     return ','.join(map(str,team_states))
-
-# @app.route("/subscribe")
-# def subscribe():
-#     print('new subscriber')
-#     def gen():
-#         q = Queue()
-#         subscriptions.append(q)
-#         try:
-#             while True:
-#                 result = q.get()
-#                 ev = ServerSentEvent(str(result))
-#                 yield ev.encode()
-#         except GeneratorExit: # Or maybe use flask signals
-#             subscriptions.remove(q)
-
-#     return Response(gen(), mimetype="text/event-stream")
 
 @app.route('/<path:path>')
 def static_file(path):
