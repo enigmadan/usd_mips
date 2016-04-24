@@ -71,7 +71,7 @@ if (filename.includes("admin")) {
         newState = data.split(',');
         myState = newState[(team_num*2)-1];
         hintState = newState[(team_num*2)];
-        console.log("new state is " + newState + ", old state is: " + where);
+        console.log("new state is " + myState + ", old state is: " + where);
         if(where==parseInt(myState)){
             where = parseInt(myState);
             setMyActiveState(myState,hintState);
