@@ -5,7 +5,7 @@ var team_num = /\d/.exec(filename);
 var running = 0;
 var hints = 0;
 var clicked = 0;
-var whereIam = 0;
+var where = 0;
 console.log("I'm on team " + team_num);
 color = ["","purple","pink","teal","blue"];
 $("#thefooter").css("background-color",color[parseInt(team_num)]);
@@ -99,9 +99,27 @@ function setMyActiveState(n,h) {
    $(document).ready(function() {
        function mips() {
            //$('.mips').append($("<div class='message'></div>").load('mips.php?mips=1 #mips1'));
-           
            $.get('/getMIPS', function(data) {
         console.log(data);
+            // load the correct part of our page
+        console.log("New event: " + data);
+        newState = data.split(',');
+        myState = newState[(team_num*2)-1];
+        hintState = newState[(team_num*2)];
+        console.log("new state is " + newState + ", my state is: " + myState);
+        if(!where==myState){
+            setMyActiveState(myState,hintState);
+        }
+        if (filename.includes("admin")) {
+            team3State = newState[3];
+            btn = document.getElementById("team3btn");
+            if (team3State == 7) {
+                btn.style.background="#32CD32";
+            } else {
+                btn.style.background=null;
+            }
+        }
+
         //var newContent = $('.result').html(data);
         //if newContent == $('.oldContent') { // Whatever check is necessary
             //  $('.mips').append(newContent);
