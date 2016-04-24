@@ -1,37 +1,5 @@
 
 
-// function handleMIPSEvent(evt) {
-//     // load the correct part of our page
-//     console.log("New event: " + evt);
-//     newState = evt.split(',');
-//     myState = newState[(team_num*2)-1];
-//     hintState = newState[(team_num*2)];
-//     console.log("new state is " + newState + ", my state is: " + myState);
-
-//     setMyActiveState(myState,hintState);
-//     if (filename.includes("admin")) {
-//         team3State = newState[3];
-//         btn = document.getElementById("team3btn");
-//         if (team3State == 7) {
-//             btn.style.background="#32CD32";
-//         } else {
-//             btn.style.background=null;
-//         }
-//     }
-// }
-
-// Reveal content related to the current state
-function setMyActiveState(n,h) {
-    clicked = 0;
-    var x = parseInt(n);
-    if(x==0||x%3==1){
-        $("#mips-content").children().hide();
-    }
-    $("#hints").html(h);
-    console.log("hints used: "+h);
-    $("#mips-content").show($("#state"+n).html());
-}
-
    $(document).ready(function() {
     // First, we find out what team we're on
 var url = window.location.pathname;
@@ -47,6 +15,16 @@ $("#thefooter").css("background-color",color[parseInt(team_num)]);
 $("#header").css("background-color",color[parseInt(team_num)]);
 $("#hintMeBabyOneMoreTime").hide();
 
+function setMyActiveState(n,h) {
+    clicked = 0;
+    var x = parseInt(n);
+    if(x==0||x%3==1){
+        $("#mips-content").children().hide();
+    }
+    $("#hints").html(h);
+    console.log("hints used: "+h);
+    $("#mips-content").show($("#state"+n).html());
+}
 
 // If we're an admin page, add info to the footer
 if (filename.includes("admin")) {
@@ -93,7 +71,7 @@ if (filename.includes("admin")) {
         newState = data.split(',');
         myState = newState[(team_num*2)-1];
         hintState = newState[(team_num*2)];
-        console.log("new state is " + newState + ", my state is: " + myState);
+        console.log("new state is " + newState + ", old state is: " + where);
         if(where==parseInt(myState)){
             where = parseInt(myState);
             setMyActiveState(myState,hintState);
@@ -112,22 +90,3 @@ if (filename.includes("admin")) {
        var auto_refresh = setInterval(mips, 3000);
        mips();
    });
-
-
-
-
-
-
-// // set the initial state
-// $.get("current_state", function(data) {
-//     handleMIPSEvent(data);
-// });
-
-// // Setup the communication channel
-// var eventOutputContainer = document.getElementById("main");
-// console.log(eventOutputContainer);
-// var evtSrc = new EventSource("/subscribe");
-
-// evtSrc.onmessage = function(e) {
-//     handleMIPSEvent(e.data);
-// };
