@@ -8,7 +8,7 @@ var team_num = /\d/.exec(filename);
 var running = 0;
 var hints = 0;
 var clicked = 0;
-var where = 0;
+var where = -1;
 console.log("I'm on team " + team_num);
 color = ["","purple","pink","teal","blue"];
 $("#thefooter").css("background-color",color[parseInt(team_num)]);
@@ -72,7 +72,7 @@ if (filename.includes("admin")) {
         myState = newState[(team_num*2)-1];
         hintState = newState[(team_num*2)];
         console.log("new state is " + myState + ", old state is: " + where);
-        if(where==parseInt(myState)){
+        if(!where==parseInt(myState)){
             where = parseInt(myState);
             setMyActiveState(myState,hintState);
         }
