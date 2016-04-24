@@ -16,7 +16,8 @@ $("#hintMeBabyOneMoreTime").hide();
 if (filename.includes("admin")) {
     $("#hintMeBabyOneMoreTime").show();
     var footerElt = document.getElementById("thefooter");
-    footerElt.innerHTML += '<a href="#" id="team1btn" class="button">Team 1</a><a href="#" id="team2btn" class="button">Team 2</a><a href="#" id="team3btn" class="button">Team 3</a><a href="#" id="team4btn" class="button">Team 4</a><a href="#" id="resetbtn" class="button">RESET</a>'
+    footerElt.innerHTML += '<a href="#" id="team1btn" class="button">Team 1</a><a href="#" id="team2btn" class="button">Team 2</a><a href="#" id="team3btn" class="button">Team 3</a><a href="#" id="team4btn" class="button">Team 4</a>';
+    //<a href="#" id="resetbtn" class="button">RESET</a>'
 
     var myTeamSelector = "#team" + team_num + "btn";
     $(function() {
