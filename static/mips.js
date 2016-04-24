@@ -1,4 +1,53 @@
-// First, we find out what team we're on
+
+
+// function handleMIPSEvent(evt) {
+//     // load the correct part of our page
+//     console.log("New event: " + evt);
+//     newState = evt.split(',');
+//     myState = newState[(team_num*2)-1];
+//     hintState = newState[(team_num*2)];
+//     console.log("new state is " + newState + ", my state is: " + myState);
+
+//     setMyActiveState(myState,hintState);
+//     if (filename.includes("admin")) {
+//         team3State = newState[3];
+//         btn = document.getElementById("team3btn");
+//         if (team3State == 7) {
+//             btn.style.background="#32CD32";
+//         } else {
+//             btn.style.background=null;
+//         }
+//     }
+// }
+
+// Reveal content related to the current state
+function setMyActiveState(n,h) {
+    clicked = 0;
+    var x = parseInt(n);
+    if(x==0||x%3==1){
+        // makeAllHidden();
+        $("#mips-content").child().hide();
+    }
+    // var newStateContainer = 
+    $("#hints").html(h);
+    console.log("hints used: "+h);
+    $("#mips-content").prepend(mips[x]);
+    // if (typeof newStateContainer !== 'undefined' && newStateContainer !== null) {
+    //     newStateContainer.style.display = "initial";
+    // }
+}
+
+// Make all the content hidden
+/*function makeAllHidden() {
+    var contentHandles = document.getElementsByClassName("ui-content");
+    for (i = 0; i < contentHandles.length; i++) {
+        contentHandles[i].style.display = "none";
+    }
+}*/
+
+
+   $(document).ready(function() {
+    // First, we find out what team we're on
 var url = window.location.pathname;
 var filename = url.substring(url.lastIndexOf('/')+1);
 var team_num = /\d/.exec(filename);
@@ -49,54 +98,6 @@ if (filename.includes("admin")) {
         });
     });
 }
-
-function handleMIPSEvent(evt) {
-    // load the correct part of our page
-    console.log("New event: " + evt);
-    newState = evt.split(',');
-    myState = newState[(team_num*2)-1];
-    hintState = newState[(team_num*2)];
-    console.log("new state is " + newState + ", my state is: " + myState);
-
-    setMyActiveState(myState,hintState);
-    if (filename.includes("admin")) {
-        team3State = newState[3];
-        btn = document.getElementById("team3btn");
-        if (team3State == 7) {
-            btn.style.background="#32CD32";
-        } else {
-            btn.style.background=null;
-        }
-    }
-}
-
-// Reveal content related to the current state
-function setMyActiveState(n,h) {
-    clicked = 0;
-    var x = parseInt(n);
-    if(x==0||x%3==1){
-        // makeAllHidden();
-        $("#mips-content").html("");
-    }
-    // var newStateContainer = 
-    $("#hints").html(h);
-    console.log("hints used: "+h);
-    $("#mips-content").prepend(mips[x]);
-    // if (typeof newStateContainer !== 'undefined' && newStateContainer !== null) {
-    //     newStateContainer.style.display = "initial";
-    // }
-}
-
-// Make all the content hidden
-/*function makeAllHidden() {
-    var contentHandles = document.getElementsByClassName("ui-content");
-    for (i = 0; i < contentHandles.length; i++) {
-        contentHandles[i].style.display = "none";
-    }
-}*/
-
-
-   $(document).ready(function() {
        function mips() {
            //$('.mips').append($("<div class='message'></div>").load('mips.php?mips=1 #mips1'));
            $.get('/getMIPS', function(data) {
@@ -120,24 +121,7 @@ function setMyActiveState(n,h) {
                 btn.style.background=null;
             }
         }
-
-        //var newContent = $('.result').html(data);
-        //if newContent == $('.oldContent') { // Whatever check is necessary
-            //  $('.mips').append(newContent);
-        /*
-            setTimeout(function() {
-            $('#content').scrollTop($('#content').get(0).scrollHeight);
-           if (navigator.vibrate) {
-        // vibration API supported
-        navigator.vibrate([100, 100, 400]);
-       }
-
-            }, 200);
-*/
-        //}
        });
-
-           console.log("refreshed");
        }
        var auto_refresh = setInterval(mips, 3000);
        mips();
