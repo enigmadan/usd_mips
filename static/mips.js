@@ -108,6 +108,7 @@ function setMyActiveState(n,h) {
         hintState = newState[(team_num*2)];
         console.log("new state is " + newState + ", my state is: " + myState);
         if(!where==myState){
+            where = myState;
             setMyActiveState(myState,hintState);
         }
         if (filename.includes("admin")) {
