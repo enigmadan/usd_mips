@@ -17,7 +17,6 @@ team_states = [-1, 0, 0, 0, 0, 0, 0, 0, 0]
 
 # SSE "protocol" is described here: http://mzl.la/UPFyxY
 class ServerSentEvent(object):
-
     def __init__(self, data):
         self.data = data
         self.event = None
@@ -27,15 +26,12 @@ class ServerSentEvent(object):
             self.event : "event",
             self.id : "id"
         }
-
     def encode(self):
         if not self.data:
             return ""
         lines = ["%s: %s" % (v, k) 
                  for k, v in self.desc_map.items() if k]
-        
         return "%s\n\n" % "\n".join(lines)
-
 app = Flask(__name__)
 subscriptions = []
 
@@ -55,12 +51,10 @@ def current_state():
 @app.route("/reset")
 def reset():
     global team_states
-
     def notify():
         msg = ','.join(map(str,team_states))
         for sub in subscriptions[:]:
             sub.put(msg)
-    
     team_states = [-1, 0, 0, 0, 0, 0, 0, 0, 0]
     gevent.spawn(notify)
     return str(team_states)
@@ -71,7 +65,6 @@ def hintMeBabyOneMoreTime(team_num):
         msg = ','.join(map(str,team_states))
         for sub in subscriptions[:]:
             sub.put(msg)
-    
     print('adding hint to team {}'.format(team_num))
     team_states[(team_num*2)-1] += 1
     team_states[(team_num*2)] += 1
@@ -80,11 +73,10 @@ def hintMeBabyOneMoreTime(team_num):
 
 @app.route("/advance_state/<int:team_num>")
 def advance_state(team_num):
-    def notify():
-        msg = ','.join(map(str,team_states))
-        for sub in subscriptions[:]:
-            sub.put(msg)
-    
+    # def notify():
+    #     msg = ','.join(map(str,team_states))
+    #     for sub in subscriptions[:]:
+    #         sub.put(msg)
     print('advancing state for team {}'.format(team_num))
     varx = team_states[(team_num*2)-1];
     if(varx%3==0):
@@ -93,10 +85,9 @@ def advance_state(team_num):
         team_states[(team_num*2)-1] += 3
     else: #(varx%3==2):
         team_states[(team_num*2)-1] += 2
-
     # team_states[(team_num*2)] = 0
-    gevent.spawn(notify)
-    return str(team_states)
+    # gevent.spawn(notify)
+    return ','.join(map(str,team_states))
 
 @app.route("/subscribe")
 def subscribe():
