@@ -72,7 +72,7 @@ def hintMeBabyOneMoreTime(team_num):
     print('adding hint to team {}'.format(team_num))
     team_states[(team_num*2)-1] += 1
     team_states[(team_num*2)] += 1
-    gevent.spawn(notify)
+    # gevent.spawn(notify)
     return ','.join(map(str,team_states))
 
 @app.route("/advance_state/<int:team_num>")
