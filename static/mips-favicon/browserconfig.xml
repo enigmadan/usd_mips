@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<browserconfig>
+  <msapplication>
+    <tile>
+      <square70x70logo src="/mips-favicon/mstile-70x70.png?v=000oB0xowY"/>
+      <square150x150logo src="/mips-favicon/mstile-150x150.png?v=000oB0xowY"/>
+      <square310x310logo src="/mips-favicon/mstile-310x310.png?v=000oB0xowY"/>
+      <wide310x150logo src="/mips-favicon/mstile-310x150.png?v=000oB0xowY"/>
+      <TileColor>#da532c</TileColor>
+    </tile>
+  </msapplication>
+</browserconfig>
