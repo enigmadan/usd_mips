@@ -107,8 +107,8 @@ function setMyActiveState(n,h) {
         myState = newState[(team_num*2)-1];
         hintState = newState[(team_num*2)];
         console.log("new state is " + newState + ", my state is: " + myState);
-        if(!where==myState){
-            where = myState;
+        if(where==parseInt(myState)){
+            where = parseInt(myState);
             setMyActiveState(myState,hintState);
         }
         if (filename.includes("admin")) {
@@ -148,16 +148,16 @@ function setMyActiveState(n,h) {
 
 
 
-// set the initial state
-$.get("current_state", function(data) {
-    handleMIPSEvent(data);
-});
+// // set the initial state
+// $.get("current_state", function(data) {
+//     handleMIPSEvent(data);
+// });
 
-// Setup the communication channel
-var eventOutputContainer = document.getElementById("main");
-console.log(eventOutputContainer);
-var evtSrc = new EventSource("/subscribe");
+// // Setup the communication channel
+// var eventOutputContainer = document.getElementById("main");
+// console.log(eventOutputContainer);
+// var evtSrc = new EventSource("/subscribe");
 
-evtSrc.onmessage = function(e) {
-    handleMIPSEvent(e.data);
-};
+// evtSrc.onmessage = function(e) {
+//     handleMIPSEvent(e.data);
+// };
