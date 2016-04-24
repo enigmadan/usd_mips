@@ -5,6 +5,7 @@ var team_num = /\d/.exec(filename);
 var running = 0;
 var hints = 0;
 var clicked = 0;
+var whereIam = 0;
 console.log("I'm on team " + team_num);
 color = ["","purple","pink","teal","blue"];
 $("#thefooter").css("background-color",color[parseInt(team_num)]);
@@ -56,6 +57,7 @@ function handleMIPSEvent(evt) {
     myState = newState[(team_num*2)-1];
     hintState = newState[(team_num*2)];
     console.log("new state is " + newState + ", my state is: " + myState);
+
     setMyActiveState(myState,hintState);
     if (filename.includes("admin")) {
         team3State = newState[3];
@@ -92,6 +94,40 @@ function setMyActiveState(n,h) {
         contentHandles[i].style.display = "none";
     }
 }*/
+
+
+   $(document).ready(function() {
+       function mips() {
+           //$('.mips').append($("<div class='message'></div>").load('mips.php?mips=1 #mips1'));
+           
+           $.get('/getMIPS', function(data) {
+        console.log($(data).text());
+        //var newContent = $('.result').html(data);
+        //if newContent == $('.oldContent') { // Whatever check is necessary
+            //  $('.mips').append(newContent);
+        /*
+            setTimeout(function() {
+            $('#content').scrollTop($('#content').get(0).scrollHeight);
+           if (navigator.vibrate) {
+        // vibration API supported
+        navigator.vibrate([100, 100, 400]);
+       }
+
+            }, 200);
+*/
+        //}
+       });
+
+           console.log("refreshed");
+       }
+       var auto_refresh = setInterval(mips, 3000);
+       mips();
+   });
+
+
+
+
+
 
 // set the initial state
 $.get("current_state", function(data) {

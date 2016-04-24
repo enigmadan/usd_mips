@@ -93,21 +93,21 @@ def advance_state(team_num):
     # gevent.spawn(notify)
     # return ','.join(map(str,team_states))
 
-@app.route("/subscribe")
-def subscribe():
-    print('new subscriber')
-    def gen():
-        q = Queue()
-        subscriptions.append(q)
-        try:
-            while True:
-                result = q.get()
-                ev = ServerSentEvent(str(result))
-                yield ev.encode()
-        except GeneratorExit: # Or maybe use flask signals
-            subscriptions.remove(q)
+# @app.route("/subscribe")
+# def subscribe():
+#     print('new subscriber')
+#     def gen():
+#         q = Queue()
+#         subscriptions.append(q)
+#         try:
+#             while True:
+#                 result = q.get()
+#                 ev = ServerSentEvent(str(result))
+#                 yield ev.encode()
+#         except GeneratorExit: # Or maybe use flask signals
+#             subscriptions.remove(q)
 
-    return Response(gen(), mimetype="text/event-stream")
+#     return Response(gen(), mimetype="text/event-stream")
 
 @app.route('/<path:path>')
 def static_file(path):
