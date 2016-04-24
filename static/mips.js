@@ -29,7 +29,7 @@ function setMyActiveState(n,h) {
     }
     $("#hints").html(h);
     console.log("hints used: "+h);
-    $("#mips-content").show($("#state"+n));
+    $("#mips-content").show($("#state"+n).html());
 }
 
    $(document).ready(function() {
