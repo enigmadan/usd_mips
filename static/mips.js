@@ -25,26 +25,12 @@ function setMyActiveState(n,h) {
     clicked = 0;
     var x = parseInt(n);
     if(x==0||x%3==1){
-        // makeAllHidden();
-        $("#mips-content").child().hide();
+        $("#mips-content").children().hide();
     }
-    // var newStateContainer = 
     $("#hints").html(h);
     console.log("hints used: "+h);
-    $("#mips-content").prepend(mips[x]);
-    // if (typeof newStateContainer !== 'undefined' && newStateContainer !== null) {
-    //     newStateContainer.style.display = "initial";
-    // }
+    $("#mips-content").show($("#state"+n));
 }
-
-// Make all the content hidden
-/*function makeAllHidden() {
-    var contentHandles = document.getElementsByClassName("ui-content");
-    for (i = 0; i < contentHandles.length; i++) {
-        contentHandles[i].style.display = "none";
-    }
-}*/
-
 
    $(document).ready(function() {
     // First, we find out what team we're on
