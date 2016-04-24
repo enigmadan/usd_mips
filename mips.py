@@ -59,17 +59,21 @@ def reset():
     gevent.spawn(notify)
     return str(team_states)
 
+@app.route("/getMIPS")
+def getMIPS():
+    return ','.join(map(str,team_states))
+
 @app.route("/hintMeBabyOneMoreTime/<int:team_num>")
 def hintMeBabyOneMoreTime(team_num):
-    def notify():
-        msg = ','.join(map(str,team_states))
-        for sub in subscriptions[:]:
-            sub.put(msg)
+    # def notify():
+    #     msg = ','.join(map(str,team_states))
+    #     for sub in subscriptions[:]:
+    #         sub.put(msg)
     print('adding hint to team {}'.format(team_num))
     team_states[(team_num*2)-1] += 1
     team_states[(team_num*2)] += 1
     gevent.spawn(notify)
-    return str(team_states)
+    # return str(team_states)
 
 @app.route("/advance_state/<int:team_num>")
 def advance_state(team_num):
@@ -87,7 +91,7 @@ def advance_state(team_num):
         team_states[(team_num*2)-1] += 2
     # team_states[(team_num*2)] = 0
     # gevent.spawn(notify)
-    return ','.join(map(str,team_states))
+    # return ','.join(map(str,team_states))
 
 @app.route("/subscribe")
 def subscribe():
