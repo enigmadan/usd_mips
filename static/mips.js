@@ -1,6 +1,8 @@
 
 
    $(document).ready(function() {
+    $("#mips-content").children().hide();
+
     // First, we find out what team we're on
 var url = window.location.pathname;
 var filename = url.substring(url.lastIndexOf('/')+1);
@@ -74,6 +76,7 @@ if (filename.includes("admin")) {
         hintState = newState[(team_num*2)];
         // console.log("new state is " + myState + ", old state is: " + where);
         if(!where==parseInt(myState)){
+            $("#mips-content").find("#state"+myState).show();
             where = parseInt(myState);
             setMyActiveState(myState,hintState);
         }
