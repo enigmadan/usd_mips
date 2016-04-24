@@ -28,7 +28,7 @@ function setMyActiveState(n,h) {
     console.log("hints used: "+h);
     console.log("hints used: "+h);
     console.log("hints used: "+h);
-    $("#mips-content").show($("#state"+n).html());
+    $("#mips-content").find("#state"+n).show();
 }
 
 // If we're an admin page, add info to the footer
