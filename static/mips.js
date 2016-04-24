@@ -17,16 +17,12 @@ $("#hintMeBabyOneMoreTime").hide();
 
 function setMyActiveState(n,h) {
         console.log("HERE IT IS: "+h);
-
     clicked = 0;
     var x = parseInt(n);
-    if(x==0||x%3==1){
+    // if(x==0||x%3==1){
         $("#mips-content").children().hide();
-    }
+    // }
     $("#hints").html(h);
-    console.log("hints used: "+h);
-    console.log("hints used: "+h);
-    console.log("hints used: "+h);
     console.log("hints used: "+h);
     $("#mips-content").find("#state"+n).show();
 }
