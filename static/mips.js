@@ -16,12 +16,17 @@ $("#header").css("background-color",color[parseInt(team_num)]);
 $("#hintMeBabyOneMoreTime").hide();
 
 function setMyActiveState(n,h) {
+        console.log("HERE IT IS: "+h);
+
     clicked = 0;
     var x = parseInt(n);
     if(x==0||x%3==1){
         $("#mips-content").children().hide();
     }
     $("#hints").html(h);
+    console.log("hints used: "+h);
+    console.log("hints used: "+h);
+    console.log("hints used: "+h);
     console.log("hints used: "+h);
     $("#mips-content").show($("#state"+n).html());
 }
@@ -65,13 +70,13 @@ if (filename.includes("admin")) {
        function mips() {
            //$('.mips').append($("<div class='message'></div>").load('mips.php?mips=1 #mips1'));
            $.get('/getMIPS', function(data) {
-        console.log(data);
+        // console.log(data);
             // load the correct part of our page
-        console.log("New event: " + data);
+        // console.log("New event: " + data);
         newState = data.split(',');
         myState = newState[(team_num*2)-1];
         hintState = newState[(team_num*2)];
-        console.log("new state is " + myState + ", old state is: " + where);
+        // console.log("new state is " + myState + ", old state is: " + where);
         if(!where==parseInt(myState)){
             where = parseInt(myState);
             setMyActiveState(myState,hintState);
